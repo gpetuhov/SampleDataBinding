@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+// Needed for the Data Binding
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -35,5 +37,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
+
+    // Needed for the Data Binding
     kapt 'androidx.databinding:databinding-compiler:3.3.0-alpha10'
 }

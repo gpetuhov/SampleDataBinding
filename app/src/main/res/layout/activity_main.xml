@@ -6,8 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--Here we declare variables that will provide data for the UI-->
+    <!--To bind our variable to the UI, helper classes are generated-->
     <data>
         <variable name="user" type="com.gpetuhov.android.sampledatabinding.model.User"/>
+        <variable name="handlers" type="com.gpetuhov.android.sampledatabinding.handlers.Handlers"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -17,13 +19,31 @@
 
         <!--Text for this view is taken from the user variable-->
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{"Hello, " + user.name}'
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@tools:sample/first_names" />
+
+        <!--Here we set onClick event handling with method reference-->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/button"
+            android:onClick="@{handlers::onButtonClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </android.support.constraint.ConstraintLayout>
 
