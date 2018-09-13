@@ -32,6 +32,8 @@
             tools:text="@tools:sample/first_names" />
 
         <!--Here we set onClick event handling with method reference-->
+        <!--And onLongClick - with listener bindings-->
+        <!--Note that long click listener must return boolean!-->
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -39,6 +41,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/button"
             android:onClick="@{handlers::onButtonClick}"
+            android:onLongClick="@{(view) -> handlers.onButtonLongClick(view, user)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
