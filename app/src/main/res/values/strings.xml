@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SampleDataBinding</string>
     <string name="button">Button</string>
+    <string name="is_programmer">is programmer</string>
 </resources>

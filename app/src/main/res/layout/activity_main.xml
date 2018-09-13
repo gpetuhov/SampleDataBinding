@@ -7,7 +7,9 @@
 
     <!--Here we declare variables that will provide data for the UI-->
     <!--To bind our variable to the UI, helper classes are generated-->
+    <!--We can use import statements here-->
     <data>
+        <import type="android.view.View"/>
         <variable name="user" type="com.gpetuhov.android.sampledatabinding.model.User"/>
         <variable name="handlers" type="com.gpetuhov.android.sampledatabinding.handlers.Handlers"/>
     </data>
@@ -23,13 +25,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{"Hello, " + user.name}'
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/isProgrammer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="@tools:sample/first_names" />
+
+        <!--We can use expressions, for example to set visibility depending on the User's properties-->
+        <TextView
+            android:id="@+id/isProgrammer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/is_programmer"
+            android:visibility='@{user.isProgrammer ? View.VISIBLE : View.GONE}'
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <!--Here we set onClick event handling with method reference-->
         <!--And onLongClick - with listener bindings-->
@@ -39,14 +54,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/button"
             android:onClick="@{handlers::onButtonClick}"
             android:onLongClick="@{(view) -> handlers.onButtonLongClick(view, user)}"
+            android:text="@string/button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/isProgrammer" />
 
     </android.support.constraint.ConstraintLayout>
 

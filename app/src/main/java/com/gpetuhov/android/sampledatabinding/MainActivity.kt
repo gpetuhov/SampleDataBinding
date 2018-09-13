@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Bind the user to the UI
-        binding.user = User("Bob")
+        binding.user = User("Bob", true)
 
         // Don't forget to instantiate and bind the event handler
         binding.handlers = Handlers()
